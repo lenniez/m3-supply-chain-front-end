@@ -1,0 +1,23 @@
+#signup-content {
+  height: 100vh;
+  background-image: url('../../../assets/images/stock.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10vw;
+}
+
+@media (max-width: 768px) {
+
+  #signup-content {
+    align-items: center;
+    padding: 0;
+  }
+
+}
+
+#signup-content {
+  color: white;
+}

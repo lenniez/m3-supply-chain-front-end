@@ -1,0 +1,21 @@
+#login-content {
+  height: 95vh;
+  background-image: url('../../../assets/images/stock.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 50%;
+}
+
+@media (max-width: 768px) {
+  #login-content {
+    align-items: center;
+    padding: 0;
+  }
+}
+
+#login-content {
+  color: white;
+}

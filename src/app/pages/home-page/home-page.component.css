@@ -1,0 +1,16 @@
+#header-content {
+  height: 100vh;
+  background-image: url('../../../assets/images/stock.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  display: flex;
+  color: white;
+}
+
+#header-content div {
+  width: 100%;
+  padding: 20vh 5vw 0 5vw;
+  text-align: center;
+}
