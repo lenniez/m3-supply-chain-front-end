@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-home-page',
@@ -6,11 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-
-  constructor() { }
+  
+  categories: Array<any> = [];
+  footwear: String = null;
+  
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
     
+    this.productService.listAllCategories()
+      .then((data) => {
+        this.categories = data;
+        this.footwear = data.labels[0];
+      });
+
+
+
+
     // smooth scroll from get started button to product category list on homepage - fix this later
     // const smoothScroll = () => {
     //   $('#get-started-btn').click(() => {
@@ -22,5 +35,6 @@ export class HomePageComponent implements OnInit {
 
     // window.addEventListener('load', smoothScroll());
   }
+
 
 }

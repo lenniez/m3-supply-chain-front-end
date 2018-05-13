@@ -18,12 +18,15 @@ import { AuthService } from './services/auth.service';
 import { InitAuthGuardService } from './guards/init-auth-guard.service';
 import { RequireUserGuardService } from './guards/require-user-guard.service';
 import { RequireAnonGuardService } from './guards/require-anon-guard.service';
+import { ProductService } from './services/product.service';
+import { SuppliersComponent } from './pages/suppliers/suppliers.component';
 
 // Routes
 const routes: Routes = [
   { path: '', component: HomePageComponent, canActivate: [InitAuthGuardService] },
   { path: 'login', component: LoginPageComponent, canActivate: [RequireAnonGuardService] },
-  { path: 'signup', component: SignupPageComponent, canActivate: [RequireAnonGuardService] }
+  { path: 'signup', component: SignupPageComponent, canActivate: [RequireAnonGuardService] },
+  { path: 'suppliers', component: SuppliersComponent, canActivate: [InitAuthGuardService] }
   // { path: '**', redirectTo: '' }
 ];
 
@@ -32,7 +35,8 @@ const routes: Routes = [
     AppComponent,
     HomePageComponent,
     LoginPageComponent,
-    SignupPageComponent
+    SignupPageComponent,
+    SuppliersComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,7 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule
   ],
-  providers: [AuthService, InitAuthGuardService, RequireUserGuardService, RequireAnonGuardService],
+  providers: [AuthService, InitAuthGuardService, RequireUserGuardService, RequireAnonGuardService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

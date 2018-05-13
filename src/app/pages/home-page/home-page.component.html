@@ -6,8 +6,13 @@
 </section>
 
 <section id="get-started-smooth-scroll">
-  <div>
-    <h2>We can connect you with hundreds of suppliers in the following product categories</h2>
-  <!-- add categories in here -->
+  <div id="categories">
+    <h2>We can connect you with hundreds of suppliers in the following product categories:</h2>
+    <div>
+      <div  *ngFor="let label of categories.labels">
+        <a [routerLink]="['/suppliers']"><button class="homepg-category-link">{{label}}</button></a>
+        <!-- in the long term this link should lead to different pages - supplier/:id -->
+      </div>
+    </div>
   </div>
 </section>
