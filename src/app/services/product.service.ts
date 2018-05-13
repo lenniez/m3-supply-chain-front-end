@@ -18,11 +18,18 @@ export class ProductService {
   }
 
   getSuppliers(): Promise<any> {
-    // const options = {
-    //   withCredentials: true
-    // };
-    // return this.httpClient.get(`${this.baseUrl}/movies/${id}`, options)
-    //   .toPromise();
-    return;
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.get(`${this.baseUrl}/suppliers`, options)
+      .toPromise();
+  }
+
+  getProducts(): Promise<any> {
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.get(`${this.baseUrl}/products`, options)
+      .toPromise();
   }
 }

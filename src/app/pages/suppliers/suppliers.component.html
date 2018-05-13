@@ -1,21 +1,36 @@
-<h1>Footwear suppliers</h1>
+<section id="suppliers-wrapper">
 
-<!-- <div *ngIf="supplier"> -->
-<!-- need to build logic into the find function to change supplier to true if supplier -->
-</div>
-<!-- {{supplier.name}} -->
-<div>
-  <p>Description Description Description Description Description Description</p>
-  <!-- <img src={{supplier.photoUrl}} alt=""> -->
-</div>
+  <h1>Footwear suppliers</h1>
+  
+  <div *ngIf="!suppliers">
+    <p>Sorry, there are no suppliers for this product category yet! Check back again soon.</p>
+  </div>
+  
+  <div *ngFor="let supplier of suppliers">
+    <h2>{{supplier.username}}</h2>
+      <!-- @todo update this summary -->
+      <p>Our sandal and shoe factory occupies a beautiful neo-brutalist building in Brescia, Italy. Here, 60 craftspeople work in
+        a 7,685 square ft facility. Owners Paolo and Tita have overseen it for 20 years but told us that many of the employees have
+        been there for more than 30.</p>
+        <img src={{supplier.photoUrl}} alt="supplier's photo">
+    </div>
+    
+    <h2>Products</h2>
+    <div id="products-wrapper">
+      <div *ngFor="let product of products">
+        <img src={{product.photoUrl}} alt="{{product._id}} photo URL">
+        <p>Product name: {{product.name}}</p>
+      </div>
+    </div>
+    <!-- @todo move into product detail page and fix the flex box-->
+    <h3>Sub-components</h3>
+    <p>Sub-components for this product each come from a distinct supplier as well.</p>
+    <div id="subcomponents-wrapper">
+      <div class="subcomponent-card" *ngFor="let subcomponent of subcomponents">
+        <img src={{subcomponent.photoUrl}} alt="" />
+        <p>Sub-component: {{subcomponent.subComponentName}}</p>
+        <p>Sub-supplier's Name: {{subcomponent.subSupplierName}}</p>
+      </div>
+    </div>
+  </section>
 
-<!-- <div id="products" *ngFor"let product of products">
-  <img src={{product.photoUrl}} alt="" />
-  <p>{{product.name}}</p>
-  <h3>Subcomponents each come from a different supplier</h3>
-  <div *ngFor="let subcomponent of subcomponents">
-    <img src={{subComponent.photoUrl}} alt="" />
-    <p>{{subComponent.subComponentName}}</p>
-    <p>{{subComponent.subSupplierName}}</p>
-  </div> -->
-</div>

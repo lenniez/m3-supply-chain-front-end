@@ -20,6 +20,7 @@ import { RequireUserGuardService } from './guards/require-user-guard.service';
 import { RequireAnonGuardService } from './guards/require-anon-guard.service';
 import { ProductService } from './services/product.service';
 import { SuppliersComponent } from './pages/suppliers/suppliers.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 // Routes
 const routes: Routes = [
@@ -36,7 +37,8 @@ const routes: Routes = [
     HomePageComponent,
     LoginPageComponent,
     SignupPageComponent,
-    SuppliersComponent
+    SuppliersComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
