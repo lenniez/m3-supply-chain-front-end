@@ -9,8 +9,12 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import { SuppliersComponent } from './pages/suppliers/suppliers.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { OpenOrdersComponent } from './pages/openorders/openorders.component';
 
 // Components
+import { OrderComponent } from './components/order/order.component';
 
 
 // Services
@@ -19,15 +23,16 @@ import { InitAuthGuardService } from './guards/init-auth-guard.service';
 import { RequireUserGuardService } from './guards/require-user-guard.service';
 import { RequireAnonGuardService } from './guards/require-anon-guard.service';
 import { ProductService } from './services/product.service';
-import { SuppliersComponent } from './pages/suppliers/suppliers.component';
-import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { OrderService } from './services/order.service';
 
 // Routes
 const routes: Routes = [
   { path: '', component: HomePageComponent, canActivate: [InitAuthGuardService] },
   { path: 'login', component: LoginPageComponent, canActivate: [RequireAnonGuardService] },
   { path: 'signup', component: SignupPageComponent, canActivate: [RequireAnonGuardService] },
-  { path: 'suppliers', component: SuppliersComponent, canActivate: [InitAuthGuardService] }
+  { path: 'suppliers', component: SuppliersComponent, canActivate: [InitAuthGuardService] },
+  { path: 'products/:id', component: ProductDetailComponent, canActivate: [InitAuthGuardService] },
+  { path: 'openorders', component: OpenOrdersComponent, canActivate: [RequireUserGuardService] }
   // { path: '**', redirectTo: '' }
 ];
 
@@ -38,7 +43,9 @@ const routes: Routes = [
     LoginPageComponent,
     SignupPageComponent,
     SuppliersComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    OpenOrdersComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,7 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule
   ],
-  providers: [AuthService, InitAuthGuardService, RequireUserGuardService, RequireAnonGuardService, ProductService],
+  providers: [AuthService, InitAuthGuardService, RequireUserGuardService, RequireAnonGuardService, ProductService, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

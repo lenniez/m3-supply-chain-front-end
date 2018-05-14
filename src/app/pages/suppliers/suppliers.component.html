@@ -20,16 +20,7 @@
       <div *ngFor="let product of products">
         <img src={{product.photoUrl}} alt="{{product._id}} photo URL">
         <p>Product name: {{product.name}}</p>
-      </div>
-    </div>
-    <!-- @todo move into product detail page and fix the flex box-->
-    <h3>Sub-components</h3>
-    <p>Sub-components for this product each come from a distinct supplier as well.</p>
-    <div id="subcomponents-wrapper">
-      <div class="subcomponent-card" *ngFor="let subcomponent of subcomponents">
-        <img src={{subcomponent.photoUrl}} alt="" />
-        <p>Sub-component: {{subcomponent.subComponentName}}</p>
-        <p>Sub-supplier's Name: {{subcomponent.subSupplierName}}</p>
+        <a [routerLink]="['/products', product._id]">See details and place order</a>
       </div>
     </div>
   </section>

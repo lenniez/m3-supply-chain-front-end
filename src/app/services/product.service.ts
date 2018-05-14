@@ -32,4 +32,13 @@ export class ProductService {
     return this.httpClient.get(`${this.baseUrl}/products`, options)
       .toPromise();
   }
+
+  getOneProduct(id): Promise<any> {
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.get(`${this.baseUrl}/products/${id}`, options)
+      .toPromise();
+  }
+
 }

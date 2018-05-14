@@ -3,17 +3,3 @@
   padding: 10vh 5vw 0 5vw;
 }
 
-#products-wrapper {
-}
-
-#subcomponents-wrapper {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.subcomponent-card,
-.subcomponent-card img
- {
-  width: 30vw;
-}

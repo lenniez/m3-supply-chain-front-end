@@ -1,0 +1,29 @@
+#product-detail-wrapper {
+  width: 100vh;
+  padding: 10vh 5vw 0 5vw;
+}
+
+#product-img {
+  width: 90vw;
+}
+
+#product-title-order-btn {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3vh 0 3vh 0;
+}
+
+#subcomponents-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.subcomponent-card,
+.subcomponent-card img
+ {
+  width: 50vw;
+}

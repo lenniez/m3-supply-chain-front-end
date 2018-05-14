@@ -11,7 +11,7 @@ export class SuppliersComponent implements OnInit {
   constructor(private productService: ProductService) { }
   suppliers: Array<any>;
   products: Array<any>;
-  subcomponents: Array<any>;
+  
 
   ngOnInit() {
 
@@ -24,7 +24,6 @@ export class SuppliersComponent implements OnInit {
         .then((productResults) => {
           console.log(productResults);
           this.products = productResults;
-          this.subcomponents = productResults[0].subComponents;
         })
       });
   }
