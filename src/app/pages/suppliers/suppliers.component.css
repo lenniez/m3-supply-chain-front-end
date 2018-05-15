@@ -16,6 +16,11 @@
   width: 100%;
 }
 
+.sketchfab-embed-wrapper iframe {
+  width: 90vw;
+  min-height: 30vh;
+}
+
 #products-wrapper {
   width: 90vw;
   border: 1px solid rgb(211, 211, 211);
@@ -27,7 +32,7 @@
   width: 100%;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 768px) {
   .supplier-card {
     width: 90vw;
     display: flex;
