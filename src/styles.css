@@ -40,6 +40,9 @@ nav li, nav a:hover {
   color: #3F84E3;
 }
 
+#site-main {
+  max-width: 1025px;
+}
 
 #site-footer p {
   align-self: flex-end;

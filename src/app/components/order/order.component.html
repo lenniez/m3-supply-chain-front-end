@@ -1,7 +1,20 @@
-<!-- <div *ngIf="!order">
-  Loading...
-</div>
+<div id="order-card-wrapper">
+  
+  <div *ngIf="!order">
+    Loading...
+  </div>
+  
+  <div *ngIf="order" class="order-card">
+    <div id="order-img">
+      <img src="{{order.product.photoUrl}}" alt="{{order.product._id}} photo">  
+    </div>
+    
+    <div>
+      <p>Product: {{order.product.name}}</p>
+      <p>Brand: {{order.brand.username}}</p>
+      <p>Supplier: {{order.supplier.username}}</p>
+      <p>Next action needed: </p>
+    </div>
+  </div>
 
-<div class="test">
-  <h3>{{order.supplierName}}</h3>x
-</div> -->
+</div>

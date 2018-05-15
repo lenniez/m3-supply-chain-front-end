@@ -1,15 +1,14 @@
-<h1>your open orders</h1>
+<div id="open-order-wrapper">
+  <h1>your open orders</h1>
 
-<div *ngIf="!orders">
-  <p>You currently have no open orders.</p>
-</div>
+  <div *ngIf="!orders">
+    <p>You currently have no open orders.</p>
+  </div>
 
-<div *ngIf="orders">
-  <div *ngFor="let order of orders">
-    {{order.productId}}
-    {{order.brandId}}
-    {{order.supplierId}}
-    <app-order [order]="order"></app-order>
+  <div *ngIf="orders">
+    <div *ngFor="let order of orders">
+      <app-order [order]="order"></app-order>
+    </div>
   </div>
 </div>
 

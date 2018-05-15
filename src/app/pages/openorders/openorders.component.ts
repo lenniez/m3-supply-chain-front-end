@@ -12,6 +12,7 @@ export class OpenOrdersComponent implements OnInit {
 
   id: String;
   orders: Array<any>;
+  orderStatus: Array<any>;
   error: String;
   user: any;
 
@@ -20,13 +21,24 @@ export class OpenOrdersComponent implements OnInit {
   ngOnInit() {
     this.user = this.authService.getUser();
 
-      this.orderService.listReleventOrders(this.user._id)
-        .then((data) => {
-          this.orders = data;
-        })
-        .catch((err) => {
-          this.error = err.error.code;
-        });
-  }
+    this.orderService.listReleventOrders(this.user._id)
+      .then((data) => {
+        this.orders = data;
+        // this.orderStatus = this.orders.orderStatus; // ?
+      })
+      .then(() => {
+        // find the first action that has a status of "false"
+        // this.orderStatus.find(this.getNextAction);
+      })
+      .catch((err) => {
+        this.error = err.error.code;
+      });
+
+
+    }
+
+    getNextAction(step) {
+      return step.status === false;
+    }
   
 }

@@ -34,9 +34,9 @@ export class ProductDetailComponent implements OnInit {
   // @todo keep an eye on this as I have changed the function several times + seed files
   placeOrder() {
     const order = {
-      productId: this.idProduct,
-      brandId: this.user._id,
-      supplierId: this.product.supplier
+      product: this.idProduct,
+      brand: this.user._id,
+      supplier: this.product.supplier
     }
 
     this.orderService.placeOrder(order)
