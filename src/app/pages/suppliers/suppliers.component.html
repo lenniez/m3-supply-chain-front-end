@@ -8,20 +8,25 @@
   
   <div *ngFor="let supplier of suppliers">
     <h2>{{supplier.username}}</h2>
-      <!-- @todo update this summary -->
-      <p>Our sandal and shoe factory occupies a beautiful neo-brutalist building in Brescia, Italy. Here, 60 craftspeople work in
-        a 7,685 square ft facility. Owners Paolo and Tita have overseen it for 20 years but told us that many of the employees have
-        been there for more than 30.</p>
-        <img src={{supplier.photoUrl}} alt="supplier's photo">
-    </div>
-    
-    <h2>Products</h2>
-    <div id="products-wrapper">
-      <div *ngFor="let product of products">
-        <img src={{product.photoUrl}} alt="{{product._id}} photo URL">
-        <p>Product name: {{product.name}}</p>
-        <a [routerLink]="['/products', product._id]">See details and place order</a>
+    <div class="supplier-card">
+      <div class="supplier-description">
+        <p>Our sandal and shoe factory occupies a beautiful neo-brutalist building in Brescia, Italy. Here, 60 craftspeople work in
+          a 7,685 square ft facility. Owners Paolo and Tita have overseen it for 20 years but told us that many of the employees have
+          been there for more than 30.</p>
       </div>
+      <div class="supplier-img-div">
+        <img src={{supplier.photoUrl}} alt="supplier's photo">
+      </div>
+    </div> 
+  </div>
+    
+  <h2>Products</h2>
+  <div id="products-wrapper">
+    <div *ngFor="let product of products">
+      <img src={{product.photoUrl}} alt="{{product._id}} photo URL">
+      <p>Product name: {{product.name}}</p>
+      <a [routerLink]="['/products', product._id]"><button>See details and place order</button></a>
     </div>
+  </div>
   </section>
 

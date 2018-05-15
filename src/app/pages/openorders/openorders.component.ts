@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderService } from '../../services/order.service';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-openorders',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OpenOrdersComponent implements OnInit {
 
-  constructor() { }
+  id: String;
+  orders: Array<any>;
+  error: String;
+  user: any;
+
+  constructor(private orderService: OrderService, private activatedRoute: ActivatedRoute, private authService: AuthService ) { }
 
   ngOnInit() {
-  }
+    this.user = this.authService.getUser();
 
+      this.orderService.listReleventOrders(this.user._id)
+        .then((data) => {
+          this.orders = data;
+        })
+        .catch((err) => {
+          this.error = err.error.code;
+        });
+  }
+  
 }

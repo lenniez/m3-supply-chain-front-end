@@ -6,7 +6,7 @@
     <div id='web-nav' [ngClass]="{'is-user': user, 'is-anon': anon}">
       <ul *ngIf="!!user">
         <li>
-          <a id="nav-btn" [routerLink]="['/']">manage orders</a>
+          <a id="nav-btn" [routerLink]="['/openorders']">manage orders</a>
         </li>
         <li>
           <a id="nav-btn" (click)="logout()">logout</a>
@@ -33,7 +33,7 @@
       <div class="responsive-menu">
         <ul *ngIf="!!user">
           <li>
-            <a id="nav-btn" [routerLink]="['/']">manage orders</a>
+            <a id="nav-btn" [routerLink]="['/openorders']">manage orders</a>
           </li>
           <li>
             <a id="nav-btn" (click)="logout()">logout</a>

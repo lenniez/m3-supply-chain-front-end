@@ -16,7 +16,7 @@ export class ProductDetailComponent implements OnInit {
   error: string;
   user: any;
 
-  constructor(private authService: AuthService  ,private activatedRoute: ActivatedRoute, private router: Router, private productService: ProductService, private orderService: OrderService) { }
+  constructor(private authService: AuthService, private activatedRoute: ActivatedRoute, private router: Router, private productService: ProductService, private orderService: OrderService) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
@@ -31,9 +31,10 @@ export class ProductDetailComponent implements OnInit {
     this.user = this.authService.getUser();
   }
 
+  // @todo keep an eye on this as I have changed the function several times + seed files
   placeOrder() {
     const order = {
-      product: this.idProduct,
+      productId: this.idProduct,
       brandId: this.user._id,
       supplierId: this.product.supplier
     }

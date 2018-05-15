@@ -1,5 +1,51 @@
 #suppliers-wrapper {
-  width: 100vh;
-  padding: 10vh 5vw 0 5vw;
+  width: 100vw;
+  max-width: 1025px;
+  padding: 7vh 3vw 0 3vw;
 }
 
+.supplier-card {
+  width: 100vw;
+}
+
+.supplier-img-div {
+  width: 90vw;
+}
+
+.supplier-card img {
+  width: 100%;
+}
+
+#products-wrapper {
+  width: 90vw;
+  border: 1px solid rgb(211, 211, 211);
+  text-align: center;
+  padding: 5vw;
+}
+
+#products-wrapper img {
+  width: 100%;
+}
+
+@media (min-width: 1025px) {
+  .supplier-card {
+    width: 90vw;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .supplier-description {
+    width: 60vw;
+  }
+
+  .supplier-img-div {
+    width: 40vw;
+    margin: 0 3vw;
+  }
+
+  #products-wrapper {
+    width: 35vw;
+    border: 1px solid rgb(211, 211, 211);
+  }
+
+}

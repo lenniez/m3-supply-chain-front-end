@@ -9,11 +9,11 @@ export class OrderService {
 
   constructor(private httpClient: HttpClient) { }
 
-  listAllOrders(): Promise<any> {
+  listReleventOrders(id): Promise<any> {
     const options = {
       withCredentials: true
     };
-    return this.httpClient.get(`${this.baseUrl}/orders`, options)
+    return this.httpClient.get(`${this.baseUrl}/orders/${id}`, options)
       .toPromise();
   }
 

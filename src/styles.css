@@ -41,11 +41,12 @@ nav li, nav a:hover {
 }
 
 
-#footer p {
+#site-footer p {
   align-self: flex-end;
   text-align: center;
   width: 100%;
   font-size: 14px;
+  margin: 10vh 0 0 0;
 }
 
 button {

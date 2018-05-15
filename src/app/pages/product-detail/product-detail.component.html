@@ -4,14 +4,17 @@
   <h2>{{product.name}}</h2>
   <button (click)="placeOrder()">place order</button>
 </div>
-  <img id="product-img" src={{product.photoUrl}} alt="{{product._id}} photo URL">
-  <h3>Sub-components</h3>
-  <p>Sub-components for this product each come from a distinct supplier as well.</p>
-  <div id="subcomponents-wrapper">
-    <div class="subcomponent-card" *ngFor="let subcomponent of subcomponents">
-      <img src={{subcomponent.photoUrl}} alt="" />
-      <p>{{subcomponent.subComponentName}}</p>
-      <p>Sub-supplier: {{subcomponent.subSupplierName}}</p>
-    </div>
+
+<img id="product-img" src={{product.photoUrl}} alt="{{product._id}} photo URL">
+<h3>Sub-components</h3>
+<p>Sub-components for this product each come from a distinct supplier as well.</p>
+
+<div id="subcomponents-wrapper">
+  <div class="subcomponent-card" *ngFor="let subcomponent of subcomponents">
+    <img src={{subcomponent.photoUrl}} alt="" />
+    <p>{{subcomponent.subComponentName}}</p>
+    <p>Sub-supplier: {{subcomponent.subSupplierName}}</p>
   </div>
+</div>
+
 </section>
