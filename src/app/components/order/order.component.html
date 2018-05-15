@@ -13,8 +13,10 @@
       <p>Product: {{order.product.name}}</p>
       <p>Brand: {{order.brand.username}}</p>
       <p>Supplier: {{order.supplier.username}}</p>
-      <p>Next action needed: </p>
     </div>
   </div>
+
+  <p>Next step needed: {{nextStepText}}</p>
+  <button *ngIf="showNextStepButton" (click)="handleAdvanceClick()">confirm and advance</button>
 
 </div>

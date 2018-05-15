@@ -31,7 +31,6 @@ export class ProductDetailComponent implements OnInit {
     this.user = this.authService.getUser();
   }
 
-  // @todo keep an eye on this as I have changed the function several times + seed files
   placeOrder() {
     const order = {
       product: this.idProduct,
