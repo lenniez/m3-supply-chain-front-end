@@ -10,12 +10,12 @@ import { AuthService } from '../../services/auth.service';
 })
 export class OrderComponent implements OnInit {
   
-  @Input() order: Object;
-  nextStep: Object;
+  @Input() order: any;
+  nextStep: any;
   nextStepText: String = null;
   showNextStepButton: boolean = false;
   error: String;
-  user: Object;
+  user: any;
 
   constructor(private orderService: OrderService, private activatedRoute: ActivatedRoute, private authService: AuthService) { }
 
@@ -32,6 +32,10 @@ export class OrderComponent implements OnInit {
   findNextStep() {
     // find first step in orderStatus array that has a status === false 
     this.nextStep = this.order.orderStatus.find(this.findStepStatusFalse);
+    // if no next step, show "completed" text
+    if (!this.nextStep) {
+      this.nextStepText = 'this order has been fulfilled';
+    }
     // if that step's role !== user's role, show default text
     if (this.nextStep.role !== this.user.role) {
       this.nextStepText = 'the next step must be completed by the other party';
@@ -88,7 +92,7 @@ export class OrderComponent implements OnInit {
 
   // function that updates next step's status on click of the advance button
   handleAdvanceClick() {
-    // update the next step's status -- in teh WORKS
+    // update the next step's status
     this.nextStep = this.order.orderStatus.find(this.findStepStatusFalse);
     this.orderService.updateOrderStatus(this.nextStep._id);
 

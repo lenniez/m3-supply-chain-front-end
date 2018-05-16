@@ -8,7 +8,7 @@ import { ProductService } from '../../services/product.service';
 })
 export class HomePageComponent implements OnInit {
   
-  categories: Array<any> = [];
+  categories: any = [];
   footwear: String = null;
   
   constructor(private productService: ProductService) { }
@@ -16,7 +16,7 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
     
     this.productService.listAllCategories()
-      .then((data) => {
+      .then((data: any) => {
         this.categories = data;
         this.footwear = data.labels[0];
       });
