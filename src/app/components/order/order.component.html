@@ -10,13 +10,13 @@
     </div>
     
     <div>
-      <p>Product: {{order.product.name}}</p>
-      <p>Brand: {{order.brand.username}}</p>
-      <p>Supplier: {{order.supplier.username}}</p>
+      <p><strong>Product:</strong> {{order.product.name}}</p>
+      <p><strong>Brand:</strong> {{order.brand.username}}</p>
+      <p><strong>Supplier:</strong> {{order.supplier.username}}</p>
     </div>
   </div>
 
-  <p>Next step needed: {{nextStepText}}</p>
+  <p><strong>Next step needed:</strong> {{nextStepText}}</p>
   <button *ngIf="showNextStepButton" (click)="handleAdvanceClick()">confirm and advance</button>
 
 </div>

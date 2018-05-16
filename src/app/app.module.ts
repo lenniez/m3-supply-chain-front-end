@@ -3,6 +3,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+// imported these to try to transform suppliers page iframe, not working yet @todo
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+@Pipe({ name: 'safe' })
+export class SafePipe implements PipeTransform {
+  constructor(private sanitizer: DomSanitizer) { }
+  transform(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+} 
 
 // Pages
 import { AppComponent } from './app.component';
@@ -45,7 +55,8 @@ const routes: Routes = [
     SuppliersComponent,
     ProductDetailComponent,
     OpenOrdersComponent,
-    OrderComponent
+    OrderComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,

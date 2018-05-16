@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+// should all the order handling script be in the open order page component??
+
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { OrderService } from '../../services/order.service';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -11,6 +13,7 @@ import { AuthService } from '../../services/auth.service';
 export class OrderComponent implements OnInit {
   
   @Input() order: any;
+  @Output() advanceClick: EventEmitter<any> = new EventEmitter;
   nextStep: any;
   nextStepText: String = null;
   showNextStepButton: boolean = false;
@@ -100,6 +103,10 @@ export class OrderComponent implements OnInit {
     this.findNextStep();
     console.log(this.nextStep);
     // how to refresh data without making user refresh page? use navigate? 
+  }
+
+  clickAdvanceBtn() {
+    this.advanceClick.emit(this.order);
   }
 
 }

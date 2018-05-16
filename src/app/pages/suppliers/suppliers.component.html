@@ -21,30 +21,42 @@
   </div>
     
   <h2>Products</h2>
-  <div class="sketchfab-embed-wrapper">
-    <!-- store the id in the product backend and populate the URL with it -->
-    <iframe src="https://sketchfab.com/models/8f360e5fcd65421daf04883e2993d523/embed?autospin=0.2&amp;autostart=1&amp;preload=1"
-    frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
-
-    <iframe src="https://sketchfab.com/models/9aa7dc3f14ef43a2b66eb992f38b88c8/embed?autospin=0.2&amp;autostart=1&amp;preload=1"
-      frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
-
-    <iframe src="https://sketchfab.com/models/17f21b0a2515455f96ad194ad5be9142/embed?autospin=0.2&amp;autostart=1&amp;preload=1"
-      frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
-  </div>
 
   <div id="products-wrapper">
-    <!-- scalable version of the product card -->
-    <div *ngFor="let product of products">
-      <img src={{product.photoUrl}} alt="{{product._id}} photo URL">
-      <p>Product name: {{product.name}}</p>
-      <a [routerLink]="['/products', product._id]"><button>See details and place order</button></a>
-    </div>
 
-    <!-- testing how to manually show the data per product so I can embed the 3d models - or is there a way to embed the iframe into the seed file?-->
-    <p *ngIf="products">{{products[0].name}}</p>
-    <!-- the below code isnt working yet to show the router links needed -->
-    <!-- <a [routerLink]="['/products', products[0]._id]"><button>See details and place order</button></a> -->
+    <!-- SCALABLE version of the product card which doesnt work with the iframe right now-->
+    <!-- <div *ngFor="let product of products">
+      <div class="sketchfab-embed-wrapper">
+        <iframe [src]="https://sketchfab.com/models/{{product.iframeId}}/embed?autospin=0.2&amp;autostart=1&amp;preload=1 | safe"
+          frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+      </div> -->
+      <!-- <img src={{product.photoUrl}} alt="{{product._id}} photo URL"> -->
+      <!-- <p>Product name: {{product.name}}</p>
+      <a [routerLink]="['/products', product._id]"><button>See details and place order</button></a>
+    </div> -->
+
+    <!-- MANUALLY show the data per product so I can embed the 3d models directly-->
+    <div *ngIf="products">
+      <div class="product-card">
+        <iframe src="https://sketchfab.com/models/8f360e5fcd65421daf04883e2993d523/embed?autospin=0.2&amp;autostart=1&amp;preload=1"
+          frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+        <p>Product name: {{products[0].name}}</p>
+        <a [routerLink]="['/products', products[0]._id]"><button>See details and place order</button></a>
+      </div>
+      
+      <div class="product-card">
+        <iframe src="https://sketchfab.com/models/9aa7dc3f14ef43a2b66eb992f38b88c8/embed?autospin=0.2&amp;autostart=1&amp;preload=1"
+          frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+        <p>Product name: {{products[1].name}}</p>
+        <a [routerLink]="['/products', products[1]._id]"><button>See details and place order</button></a>
+      </div>
+      <div class="product-card">
+        <iframe src="https://sketchfab.com/models/17f21b0a2515455f96ad194ad5be9142/embed?autospin=0.2&amp;autostart=1&amp;preload=1"
+          frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+        <p>Product name: {{products[2].name}}</p>
+        <a [routerLink]="['/products', products[2]._id]"><button>See details and place order</button></a>
+      </div>
+    </div>
   </div>
   </section>
 
