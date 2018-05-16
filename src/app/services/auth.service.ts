@@ -11,7 +11,7 @@ export class AuthService {
   private user: any;
   private userChange: Subject<any> = new Subject();
 
-  baseUrl = environment.apiUrl;
+  baseUrl = `${environment.apiUrl}/auth`;
 
   userChange$: Observable<any> = this.userChange.asObservable();
 

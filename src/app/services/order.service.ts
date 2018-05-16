@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class OrderService {
 
-  baseUrl = environment.apiUrl;
+  baseUrl = `${environment.apiUrl}/orders`;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -14,7 +14,7 @@ export class OrderService {
     const options = {
       withCredentials: true
     };
-    return this.httpClient.get(`${this.baseUrl}/orders/${userId}`, options)
+    return this.httpClient.get(`${this.baseUrl}/${userId}`, options)
       .toPromise();
   }
 
@@ -22,7 +22,7 @@ export class OrderService {
     const options = {
       withCredentials: true
     };
-    return this.httpClient.post(`${this.baseUrl}/orders/placeorder`, order, options)
+    return this.httpClient.post(`${this.baseUrl}/placeorder`, order, options)
       .toPromise();
 
     }
@@ -31,7 +31,7 @@ export class OrderService {
     const options = {
       withCredentials: true
     };
-    return this.httpClient.put(`${this.baseUrl}/orders/step/${stepId}`, stepId, options)
+    return this.httpClient.put(`${this.baseUrl}/step/${stepId}`, stepId, options)
       .toPromise();
   }
 
