@@ -23,6 +23,15 @@ export class OrderService {
     };
     return this.httpClient.post(`${this.baseUrl}/orders/placeorder`, order, options)
       .toPromise();
+
+    }
+
+  updateOrderStatus(stepId): Promise <any> {
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.put(`${this.baseUrl}/orders/step/${stepId}`, stepId, options)
+      .toPromise();
   }
 
 }

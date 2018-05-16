@@ -21,6 +21,7 @@ export class OpenOrdersComponent implements OnInit {
   ngOnInit() {
     this.user = this.authService.getUser();
 
+    // @todo make this into an observable -- work with andre
     this.orderService.listReleventOrders(this.user._id)
       .then((data) => {
         this.orders = data;

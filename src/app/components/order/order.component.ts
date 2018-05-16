@@ -22,8 +22,16 @@ export class OrderComponent implements OnInit {
   ngOnInit() {
     // get user
     this.user = this.authService.getUser();
+
+    //find the next step needed
+    this.findNextStep()
+  }
+  
+
+  // function to find the next step that has not been completed yet
+  findNextStep() {
     // find first step in orderStatus array that has a status === false 
-    this.nextStep = this.order.orderStatus.find(this.findNextStep);
+    this.nextStep = this.order.orderStatus.find(this.findStepStatusFalse);
     // if that step's role !== user's role, show default text
     if (this.nextStep.role !== this.user.role) {
       this.nextStepText = 'the next step must be completed by the other party';
@@ -69,18 +77,23 @@ export class OrderComponent implements OnInit {
           this.nextStepText = 'accept production batch';
           break;
       }
-
     }
 
   }
-  // function that feeds into find above that determines next step with status === false
-  findNextStep(step) {
+
+  // function that feeds into findNextStep() above that determines next step with status === false
+  findStepStatusFalse(step) {
     return step.status === false;
   }
 
+  // function that updates next step's status on click of the advance button
   handleAdvanceClick() {
-    this.nextStep.status = true;
-    console.log(this.nextStep.status);
+    // update the next step's status -- in teh WORKS
+    this.nextStep = this.order.orderStatus.find(this.findStepStatusFalse);
+    this.orderService.updateOrderStatus(this.nextStep._id);
+
+    //find the next step needed to update component
+    this.findNextStep();
     console.log(this.nextStep);
     // how to refresh data without making user refresh page? use navigate? 
   }
