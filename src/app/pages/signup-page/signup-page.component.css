@@ -1,6 +1,7 @@
 #signup-content {
   height: 100vh;
-  background-image: url('../../../assets/images/stock.jpg');
+  width: 100vw;
+  background-image: url('../../../assets/images/bw-sew.jpg');
   background-size: cover;
   background-position: center;
   display: flex;

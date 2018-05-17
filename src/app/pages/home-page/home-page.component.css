@@ -1,12 +1,21 @@
 #header-content {
   height: 100vh;
-  background-image: url('../../../assets/images/stock.jpg');
+  width: 100vw;
+  background-image: url('../../../assets/images/bw-sew.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
   display: flex;
   color: white;
+}
+
+#header-title {
+  width: 100vw;
+}
+
+#header-title h3 {
+  padding: 100px 0 0 0;
 }
 
 #header-content div {
@@ -16,7 +25,8 @@
 }
 
 #categories {
-  height: 100vh;
+  height: 80vh;
+  width: 100vw;
   padding: 10vh 0 0 0;
   display: flex;
   flex-direction: column;
@@ -40,4 +50,10 @@
   width: 80vw;
   padding: 2vh;
   margin: 1vh 0;
+}
+
+@media (min-width: 768px) {
+  #header-title {
+    max-width: 50vw;
+  }
 }

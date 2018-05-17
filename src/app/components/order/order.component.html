@@ -1,10 +1,9 @@
-<div id="order-card-wrapper">
-  
-  <div *ngIf="!order">
-    Loading...
-  </div>
-  
-  <div *ngIf="order" class="order-card">
+<div *ngIf="!order">
+  <p>you currently have no open orders</p>
+</div>
+
+<div *ngIf="order" id="order-card-wrapper">
+  <div class="order-card">
     <div id="order-img">
       <img src="{{order.product.photoUrl}}" alt="{{order.product._id}} photo">  
     </div>
@@ -13,10 +12,21 @@
       <p><strong>Product:</strong> {{order.product.name}}</p>
       <p><strong>Brand:</strong> {{order.brand.username}}</p>
       <p><strong>Supplier:</strong> {{order.supplier.username}}</p>
+      <!-- <span class="skype-button bubble " data-contact-id="lennie.zhu" data-color="#0097f2"></span>
+      <span class="skype-chat" data-color-message="#94cfff"></span> -->
     </div>
   </div>
 
-  <p><strong>Next step needed:</strong> {{nextStepText}}</p>
-  <button *ngIf="showNextStepButton" (click)="handleAdvanceClick()">confirm and advance</button>
+  <div class="next-step-wrapper">
+    <div>
+      <p><strong>Step () :</strong> {{nextStepText}}</p>
+    </div>
+    <div>
+      <button *ngIf="showNextStepButton" (click)="handleAdvanceClick()">confirm & advance</button>
+    </div>
+  </div>
 
 </div>
+
+  <!-- Skype -->
+  <!-- <script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script> -->

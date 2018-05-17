@@ -1,62 +1,88 @@
-<section id="suppliers-wrapper">
+<section *ngIf="!suppliers">
+  <p>Sorry, there are no suppliers for this product category yet! Check back again soon.</p>
+</section>
 
-  <h1>Footwear suppliers</h1>
-  
-  <div *ngIf="!suppliers">
-    <p>Sorry, there are no suppliers for this product category yet! Check back again soon.</p>
-  </div>
-  
-  <div *ngFor="let supplier of suppliers">
-    <h2>{{supplier.username}}</h2>
-    <div class="supplier-card">
-      <div class="supplier-img-div">
-        <img src={{supplier.photoUrl}} alt="supplier's photo">
-      </div>
-      <div class="supplier-description">
-        <p>Our sandal and shoe factory occupies a beautiful neo-brutalist building in Brescia, Italy. Here, 60 craftspeople work in
-          a 7,685 square ft facility. Owners Paolo and Tita have overseen it for 20 years but told us that many of the employees have
-          been there for more than 30.</p>
-      </div>
-    </div> 
-  </div>
+<section *ngIf="suppliers" id="suppliers-wrapper">
+  <div class="secondary-supplier-wrapper">
+    <h1>Footwear suppliers</h1>
     
-  <h2>Products</h2>
-
-  <div id="products-wrapper">
-
-    <!-- SCALABLE version of the product card which doesnt work with the iframe right now-->
-    <!-- <div *ngFor="let product of products">
-      <div class="sketchfab-embed-wrapper">
-        <iframe [src]="https://sketchfab.com/models/{{product.iframeId}}/embed?autospin=0.2&amp;autostart=1&amp;preload=1 | safe"
-          frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
-      </div> -->
-      <!-- <img src={{product.photoUrl}} alt="{{product._id}} photo URL"> -->
-      <!-- <p>Product name: {{product.name}}</p>
-      <a [routerLink]="['/products', product._id]"><button>See details and place order</button></a>
-    </div> -->
-
-    <!-- MANUALLY show the data per product so I can embed the 3d models directly-->
-    <div *ngIf="products">
-      <div class="product-card">
-        <iframe src="https://sketchfab.com/models/8f360e5fcd65421daf04883e2993d523/embed?autospin=0.2&amp;autostart=1&amp;preload=1"
-          frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
-        <p>Product name: {{products[0].name}}</p>
-        <a [routerLink]="['/products', products[0]._id]"><button>See details and place order</button></a>
-      </div>
-      
-      <div class="product-card">
-        <iframe src="https://sketchfab.com/models/9aa7dc3f14ef43a2b66eb992f38b88c8/embed?autospin=0.2&amp;autostart=1&amp;preload=1"
-          frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
-        <p>Product name: {{products[1].name}}</p>
-        <a [routerLink]="['/products', products[1]._id]"><button>See details and place order</button></a>
-      </div>
-      <div class="product-card">
-        <iframe src="https://sketchfab.com/models/17f21b0a2515455f96ad194ad5be9142/embed?autospin=0.2&amp;autostart=1&amp;preload=1"
-          frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
-        <p>Product name: {{products[2].name}}</p>
-        <a [routerLink]="['/products', products[2]._id]"><button>See details and place order</button></a>
-      </div>
+    <div *ngFor="let supplier of suppliers">
+      <h2>{{supplier.username}}</h2>
+      <div class="supplier-card">
+        <div class="supplier-img-div">
+          <img src={{supplier.photoUrl}} alt="supplier's photo">
+        </div>
+        <div class="supplier-description">
+          <p>Our sandal and shoe factory occupies a beautiful neo-brutalist building in Brescia, Italy. Here, 60 craftspeople work in
+            a 7,685 square ft facility. Owners Paolo and Tita have overseen it for 20 years but told us that many of the employees have
+            been there for more than 30.</p>
+        </div>
+      </div> 
     </div>
   </div>
-  </section>
+
+  
+  <div id="products-wrapper">
+    <div class="secondary-supplier-wrapper">
+        <h2>Products</h2>
+      
+          <div *ngIf="products">
+            <div class="product-card">
+              <div class="product-card-header">
+                <div>
+                  <span>{{products[0].name}}</span>
+                </div>
+                <div>
+                  <a [routerLink]="['/products', products[0]._id]"><button>See more</button></a>
+                </div>
+              </div>
+              <iframe src="https://sketchfab.com/models/9aa7dc3f14ef43a2b66eb992f38b88c8/embed?autospin=0.2&amp;autostart=1&amp;preload=1"
+                frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+            </div>
+            
+            <div class="product-card">
+              <div class="product-card-header">
+                <div>
+                  <span>{{products[1].name}}</span>
+                </div>
+                <div>
+                  <a [routerLink]="['/products', products[1]._id]"><button>See more</button></a>
+                </div>
+              </div>
+              <iframe src="https://sketchfab.com/models/17f21b0a2515455f96ad194ad5be9142/embed?autospin=0.2&amp;autostart=1&amp;preload=1"
+                frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+            </div>
+      
+            <div class="product-card">
+              <div class="product-card-header">
+                <div>
+                  <span>{{products[2].name}}</span>
+                </div>
+                <div>
+                  <a [routerLink]="['/products', products[2]._id]"><button>See more</button></a>
+                </div>
+              </div>
+              <iframe src="https://sketchfab.com/models/8f360e5fcd65421daf04883e2993d523/embed?autospin=0.2&amp;autostart=1&amp;preload=1"
+              frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel="">
+              </iframe>
+            </div>
+          </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- SCALABLE version of the product card which doesnt work with the iframe right now-->
+<!-- <div *ngFor="let product of products">
+  <div class="sketchfab-embed-wrapper">
+    <iframe [src]="https://sketchfab.com/models/{{product.iframeId}}/embed?autospin=0.2&amp;autostart=1&amp;preload=1 | safe"
+      frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+  </div> -->
+  <!-- <img src={{product.photoUrl}} alt="{{product._id}} photo URL"> -->
+  <!-- <p>Product name: {{product.name}}</p>
+  <a [routerLink]="['/products', product._id]"><button>See details and place order</button></a>
+</div> -->
+
+  
 

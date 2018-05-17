@@ -1,5 +1,5 @@
 <div id="open-order-wrapper">
-  <h1>your open orders</h1>
+  <h2>{{user.username}}: your open orders </h2>
 <!-- @todo this div below does not render if there are no orders? -->
   <div *ngIf="!orders">
     <p>You currently have no open orders.</p>

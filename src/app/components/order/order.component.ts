@@ -1,6 +1,6 @@
 // should all the order handling script be in the open order page component??
 
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { OrderService } from '../../services/order.service';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -13,10 +13,10 @@ import { AuthService } from '../../services/auth.service';
 export class OrderComponent implements OnInit {
   
   @Input() order: any;
-  @Output() advanceClick: EventEmitter<any> = new EventEmitter;
   nextStep: any;
   nextStepText: String = null;
   showNextStepButton: boolean = false;
+  // counter: Number = 1;
   error: String;
   user: any;
 
@@ -27,7 +27,7 @@ export class OrderComponent implements OnInit {
     this.user = this.authService.getUser();
 
     //find the next step needed
-    this.findNextStep()
+    this.findNextStep();
   }
   
 
@@ -35,9 +35,12 @@ export class OrderComponent implements OnInit {
   findNextStep() {
     // find first step in orderStatus array that has a status === false 
     this.nextStep = this.order.orderStatus.find(this.findStepStatusFalse);
+    // this.counter++;
     // if no next step, show "completed" text
     if (!this.nextStep) {
       this.nextStepText = 'this order has been fulfilled';
+      this.showNextStepButton = false; // do not show the "confirm and advance" button on page
+      return;
     }
     // if that step's role !== user's role, show default text
     if (this.nextStep.role !== this.user.role) {
@@ -57,7 +60,7 @@ export class OrderComponent implements OnInit {
           this.nextStepText = 'accept 3D model';
           break;
         case 'sample-subsupplier-receive':
-          this.nextStepText = 'confirm sub-supplier shipments received for samples';
+          this.nextStepText = 'confirm sub-supplier sample shipments received';
           break;
         case 'sample-assemble':
           this.nextStepText = 'assemble samples';
@@ -72,7 +75,7 @@ export class OrderComponent implements OnInit {
           this.nextStepText = 'complete pre-production planning';
           break;
         case 'full-batch-subsupplier-receive':
-          this.nextStepText = 'confirm sub-supplier shipments received for production batch';
+          this.nextStepText = 'confirm sub-supplier prod shipments received';
           break;
         case 'full-batch-assemble':
           this.nextStepText = 'assemble production batch';
@@ -95,18 +98,22 @@ export class OrderComponent implements OnInit {
 
   // function that updates next step's status on click of the advance button
   handleAdvanceClick() {
-    // update the next step's status
-    this.nextStep = this.order.orderStatus.find(this.findStepStatusFalse);
-    this.orderService.updateOrderStatus(this.nextStep._id);
-
-    //find the next step needed to update component
-    this.findNextStep();
-    console.log(this.nextStep);
-    // how to refresh data without making user refresh page? use navigate? 
-  }
-
-  clickAdvanceBtn() {
-    this.advanceClick.emit(this.order);
+    // update the next step's backend status
+    // then update the next step's frontend status
+    // then find the new next step
+    this.orderService.updateOrderStatus(this.nextStep._id)
+      .then((result) => {
+        console.log(result);
+        // this.order = result;
+        for (var ix = 0; ix < this.order.orderStatus.length; ix++) {
+          const step = this.order.orderStatus[ix];
+          if (step.status === false) {
+            step.status = true;
+            this.findNextStep();
+            break;
+          }
+        }
+      });
   }
 
 }

@@ -3,8 +3,7 @@
   <form (ngSubmit)="submitLoginForm(form)" #form="ngForm" novalidate [ngClass]="{'is-processing': processing}">
 
     <div class="field" [ngClass]="{'has-error': feedbackEnabled && usernameField.errors}">
-      <label>username</label>
-      <input type="text" name="username" [(ngModel)]="username" #usernameField="ngModel" required [disabled]="processing"
+      <input type="text" name="username" [(ngModel)]="username" #usernameField="ngModel" required [disabled]="processing" placeholder="username"
       />
       <div *ngIf="feedbackEnabled && usernameField.errors">
         <p *ngIf="usernameField.errors.required" class="validation">username required</p>
@@ -12,8 +11,7 @@
     </div>
 
     <div class="field" [ngClass]="{'has-error': feedbackEnabled && passwordField.errors}">
-      <label>password</label>
-      <input type="password" name="password" [(ngModel)]="password" #passwordField="ngModel" required [disabled]="processing"
+      <input type="password" name="password" [(ngModel)]="password" #passwordField="ngModel" required [disabled]="processing" placeholder="password"
       />
       <div *ngIf="feedbackEnabled && passwordField.errors">
         <p *ngIf="passwordField.errors.required" class="validation">password required</p>
@@ -23,7 +21,7 @@
     <div class="field submit">
       <button type="submit" [disabled]="processing">login</button>
       <div *ngIf="feedbackEnabled && form.invalid">
-        <p class="validation">there are errors in the form, please review the fields</p>
+        <!-- <p class="validation">please review fields</p> -->
       </div>
     </div>
   </form>

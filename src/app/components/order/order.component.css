@@ -1,30 +1,44 @@
 #order-card-wrapper {
-  border: 1px solid gray;
+  border: 1px solid #e0e0e0;
   width: 100%;
   margin: 5vh 0;
+}
+
+.next-step-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3%;
+  background-color: #f2f2f2;
 }
 
 .order-card {
   display: flex;
   flex-direction: row;
-  padding: 5px;
+  padding: 5%;
   width: 100%;
 }
 
+
 #order-img {
-  width: 40vw;
+  width: 30vw;
 }
 
 #order-img img {
   width: 30vw;
 }
 
-
 @media (max-width: 768px) {
   .order-card {
     display: block;
   }
   #order-img img {
-    width: 90%;
+    width: 100%;
   }
+
+  #order-img {
+  width: 80%;
+  margin-right: 5%;
+}
 }

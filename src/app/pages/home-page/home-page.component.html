@@ -1,6 +1,6 @@
 <section id="header-content">
-  <div>
-    <h3>[Name] is a supply chain platform that connects brands with global manufacturers and guides you through order management.</h3>
+  <div id="header-title">
+    <h3>Our platform connects you with global manufacturers. Place orders for production, and then sit back as we guide you through every single step.</h3>
     <button id="get-started-btn">Get started</button>
   </div>
 </section>
@@ -9,7 +9,7 @@
   <div id="categories">
     <h2>We can connect you with hundreds of suppliers in the following product categories:</h2>
     <div>
-      <div  *ngFor="let label of categories.labels">
+      <div class="homepg-category-wrapper" *ngFor="let label of categories.labels">
         <a [routerLink]="['/suppliers']"><button class="homepg-category-link">{{label}}</button></a>
         <!-- how to disable other links? -->
       </div>
