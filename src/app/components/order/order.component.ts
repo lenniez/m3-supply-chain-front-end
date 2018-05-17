@@ -104,7 +104,6 @@ export class OrderComponent implements OnInit {
     this.orderService.updateOrderStatus(this.nextStep._id)
       .then((result) => {
         console.log(result);
-        // this.order = result;
         for (var ix = 0; ix < this.order.orderStatus.length; ix++) {
           const step = this.order.orderStatus[ix];
           if (step.status === false) {
